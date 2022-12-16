@@ -52,12 +52,13 @@ void process_data(const string& file_path){
     stringstream ss;
     while(ifs >> id1>>id2>>wight>>timestamp){
         if (nums.eof()){
-            nums.seekg(ios::beg);
+            nums.close();
+            nums.open(baseDIr+"generate.data");
             cout<<file_path<<" end, loop from begin"<<endl;
         }
         nums>>duration;
 
-        ss<<id1<<" "<<id2<<" "<<int(timestamp)<<" "<<duration<<"\n";
+        ss<<id1<<" "<<id2<<" "<<long(timestamp)<<" "<<duration<<"\n";
     }
     int idx = file_path.find("out");
     idx+=4;
